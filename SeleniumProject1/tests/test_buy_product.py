@@ -1,14 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-import time
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from pages.cart_page import CartPage
+from pages.client_information_page import ClientInformationPage
+from pages.finish_page import FinishPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
+from pages.payment_page import PaymentPage
 
 
 def test_buy_product():
@@ -25,5 +23,14 @@ def test_buy_product():
 
     cp = CartPage(driver)
     cp.click_checkout_button()
+
+    cip = ClientInformationPage(driver)
+    cip.input_information()
+
+    p = PaymentPage(driver)
+    p.payment()
+
+    f = FinishPage(driver)
+    f.finish()
 
     print("Finish test")
