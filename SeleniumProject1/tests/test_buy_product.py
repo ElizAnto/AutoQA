@@ -1,3 +1,4 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
@@ -8,29 +9,65 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.payment_page import PaymentPage
 
-
-def test_buy_product():
+@pytest.mark.order(3)
+def test_buy_product_1():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
 
-    print("Start test")
+    print("Start test 1")
 
     login = LoginPage(driver)
     login.authorisation()
 
     mp = MainPage(driver)
-    mp.select_product()
+    mp.select_products_1()
 
     cp = CartPage(driver)
     cp.click_checkout_button()
 
-    cip = ClientInformationPage(driver)
-    cip.input_information()
+    # cip = ClientInformationPage(driver)
+    # cip.input_information()
+    #
+    # p = PaymentPage(driver)
+    # p.payment()
+    #
+    # f = FinishPage(driver)
+    # f.finish()
 
-    p = PaymentPage(driver)
-    p.payment()
+    print("Finish test 1")
 
-    f = FinishPage(driver)
-    f.finish()
+@pytest.mark.order(1)
+def test_buy_product_2():
+    driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
+                              service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
 
-    print("Finish test")
+    print("Start test 2")
+
+    login = LoginPage(driver)
+    login.authorisation()
+
+    mp = MainPage(driver)
+    mp.select_products_2()
+
+    cp = CartPage(driver)
+    cp.click_checkout_button()
+
+    print("Finish test 2")
+
+@pytest.mark.order(2)
+def test_buy_product_3():
+    driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
+                              service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
+
+    print("Start test 3")
+
+    login = LoginPage(driver)
+    login.authorisation()
+
+    mp = MainPage(driver)
+    mp.select_products_3()
+
+    cp = CartPage(driver)
+    cp.click_checkout_button()
+
+    print("Finish test 3")
