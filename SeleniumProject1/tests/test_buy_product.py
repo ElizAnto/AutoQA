@@ -9,8 +9,8 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.payment_page import PaymentPage
 
-@pytest.mark.order(3)
-def test_buy_product_1():
+# @pytest.mark.order(3)
+def test_buy_product_1(set_group):
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
 
@@ -25,19 +25,20 @@ def test_buy_product_1():
     cp = CartPage(driver)
     cp.click_checkout_button()
 
-    # cip = ClientInformationPage(driver)
-    # cip.input_information()
-    #
-    # p = PaymentPage(driver)
-    # p.payment()
-    #
-    # f = FinishPage(driver)
-    # f.finish()
+    cip = ClientInformationPage(driver)
+    cip.input_information()
+
+    p = PaymentPage(driver)
+    p.payment()
+
+    f = FinishPage(driver)
+    f.finish()
 
     print("Finish test 1")
+    driver.quit()
 
-@pytest.mark.order(1)
-def test_buy_product_2():
+# @pytest.mark.order(1)
+def test_buy_product_2(set_group):
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
 
@@ -53,8 +54,9 @@ def test_buy_product_2():
     cp.click_checkout_button()
 
     print("Finish test 2")
+    driver.quit()
 
-@pytest.mark.order(2)
+# @pytest.mark.order(2)
 def test_buy_product_3():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
@@ -71,3 +73,4 @@ def test_buy_product_3():
     cp.click_checkout_button()
 
     print("Finish test 3")
+    driver.quit()
