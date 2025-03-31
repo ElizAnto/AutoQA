@@ -1,10 +1,11 @@
+import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
-
+@allure.description("Test link about")
 def test_link_about():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))

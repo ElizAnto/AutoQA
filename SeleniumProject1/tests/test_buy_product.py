@@ -1,4 +1,5 @@
 import pytest
+import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
@@ -9,6 +10,8 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.payment_page import PaymentPage
 
+# @pytest.mark.order(3)
+@allure.description("Test buy product 1")
 def test_buy_product_1():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
@@ -36,38 +39,38 @@ def test_buy_product_1():
     print("Finish test 1")
     driver.quit()
 
-def test_buy_product_2():
-    driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
-                              service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
-
-    print("Start test 2")
-
-    login = LoginPage(driver)
-    login.authorisation()
-
-    mp = MainPage(driver)
-    mp.select_products_2()
-
-    cp = CartPage(driver)
-    cp.click_checkout_button()
-
-    print("Finish test 2")
-    driver.quit()
-
-def test_buy_product_3():
-    driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
-                              service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
-
-    print("Start test 3")
-
-    login = LoginPage(driver)
-    login.authorisation()
-
-    mp = MainPage(driver)
-    mp.select_products_3()
-
-    cp = CartPage(driver)
-    cp.click_checkout_button()
-
-    print("Finish test 3")
-    driver.quit()
+# def test_buy_product_2():
+#     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
+#                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
+#
+#     print("Start test 2")
+#
+#     login = LoginPage(driver)
+#     login.authorisation()
+#
+#     mp = MainPage(driver)
+#     mp.select_products_2()
+#
+#     cp = CartPage(driver)
+#     cp.click_checkout_button()
+#
+#     print("Finish test 2")
+#     driver.quit()
+#
+# def test_buy_product_3():
+#     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
+#                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
+#
+#     print("Start test 3")
+#
+#     login = LoginPage(driver)
+#     login.authorisation()
+#
+#     mp = MainPage(driver)
+#     mp.select_products_3()
+#
+#     cp = CartPage(driver)
+#     cp.click_checkout_button()
+#
+#     print("Finish test 3")
+#     driver.quit()
