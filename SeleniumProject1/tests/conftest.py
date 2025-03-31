@@ -12,8 +12,6 @@ def set_up():
 """Для группы тестов"""
 @pytest.fixture(scope="module")
 def set_group():
-    # Driver, URL, get(URL), maximize
     print("Enter system")
     yield
-    # driver.quit()
     print("Exit system")

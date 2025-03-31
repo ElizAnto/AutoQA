@@ -9,8 +9,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from pages.payment_page import PaymentPage
 
-# @pytest.mark.order(3)
-def test_buy_product_1(set_group):
+def test_buy_product_1():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
 
@@ -37,8 +36,7 @@ def test_buy_product_1(set_group):
     print("Finish test 1")
     driver.quit()
 
-# @pytest.mark.order(1)
-def test_buy_product_2(set_group):
+def test_buy_product_2():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
 
@@ -56,7 +54,6 @@ def test_buy_product_2(set_group):
     print("Finish test 2")
     driver.quit()
 
-# @pytest.mark.order(2)
 def test_buy_product_3():
     driver = webdriver.Chrome(options=webdriver.ChromeOptions(),
                               service=Service('C:\\Users\\Toughie\\PycharmProjects\\resource\\chromedriver.exe'))
