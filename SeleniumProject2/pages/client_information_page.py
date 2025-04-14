@@ -1,10 +1,11 @@
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
 
-class CartPage(Base):
+class ClientInformationPage(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -12,89 +13,66 @@ class CartPage(Base):
 
     # Locators
 
-    cost_product = "//b[@class='nowrap']"
-    cost_final = "//div[@class='multicart__items__resultsLine__value']"
-    city_menu = "//a[@title='Выбрать другой город']"
-    city_samara = "//a[@title='Самара']"
-        # Пункты выдачи
-    delivery_word = "//h2[@class='floatLeft']"
-    point_may = "//label[@for='shipmentradio392']" # ТЦ Май
-        # Способы оплаты
-    cash = "//label[@for='paymentradio1']"
-        # Оформление
-    order_button = "//input[@class='button button__orange semibold js__formBoxMainButton floatRight']"
-    main_word = "(//div[@class='k_centered'])[4]"
+    name = "//input[@title='Контактное лицо']"
+    phone = "//input[@id='cellphone__ID']"
+    sms_time = "//select[@id='sms_time__ID']"
+    sms_time_2 = "//option[@value='2']"
+    main_word = "//div[@class='note note__dash gray']" # Ваш Заказ будет обработан автоматически, о готовности заказа к получению мы уведомим Вас по SMS и e-mail.
 
     # Getters
 
-    def get_cost_product(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cost_product)))
+    def get_name(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.name)))
 
-    def get_cost_final(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cost_final)))
+    def get_phone(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.phone)))
 
-    def get_city_menu(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_menu)))
+    def get_sms_time(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.sms_time)))
 
-    def get_city_samara(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_samara)))
-
-    def get_delivery_word(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.delivery_word)))
-
-    def get_point_may(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.point_may)))
-
-    def get_cash(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cash)))
-
-    def get_order_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.order_button)))
+    def get_sms_time_2(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.sms_time_2)))
 
     def get_main_word(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.main_word)))
 
     # Actions
 
-    def click_cost_product(self):
-        self.get_cost_product().click()
-        print("Click cost product")
+    def clear_name(self):
+        self.get_name().send_keys(Keys.CONTROL + "a")
+        self.get_name().send_keys(Keys.DELETE)
+        print("Clear name")
 
-    def click_cost_final(self):
-        self.get_cost_product().click()
-        print("Click cost product")
+    def input_name(self, value):
+        self.get_name().send_keys(value)
+        print("Input name " + value)
 
-    def click_city_menu(self):
-        self.get_city_menu().click()
-        print("Click city menu")
+    def clear_phone(self):
+        self.get_phone().send_keys(Keys.CONTROL + "a")
+        self.get_phone().send_keys(Keys.DELETE)
+        print("Clear phone")
 
-    def click_city_samara(self):
-        self.get_city_samara().click()
-        print("Click city Samara")
+    def input_phone(self, value):
+        self.get_phone().send_keys(value)
+        print("Input phone " + value)
 
-    def click_point_may(self):
-        self.get_point_may().click()
-        print("Click point may")
+    def click_sms_time(self):
+        self.get_sms_time().click()
+        print("Click sms time")
 
-    def click_cash(self):
-        self.get_cash().click()
-        print("Click cash")
-
-    def click_order_button(self):
-        self.get_order_button().click()
-        print("Click order button")
+    def click_sms_time_2(self):
+        self.get_sms_time_2().click()
+        print("Click sms time 2")
 
     # Methods
 
-    def product_confirmation(self):
+    def input_information(self):
         self.get_current_url()
-        self.click_cost_product()
-        self.click_cost_final()
-        self.click_city_menu()
-        self.click_point_may()
-        self.assert_word(self.get_delivery_word(), "Пункты выдачи в Самаре")
-        self.click_point_may()
-        self.click_cash()
-        self.click_order_button()
-        self.assert_word(self.get_main_word(), "Оформление заказа")
+        self.clear_name()
+        self.input_name("Антон Елизаров")
+        self.clear_phone()
+        self.input_phone("+7987654321")
+        self.click_sms_time()
+        self.click_sms_time_2()
+        self.assert_word(self.get_main_word(), "Ваш Заказ будет обработан автоматически, о готовности заказа к получению мы уведомим Вас по SMS и e-mail.")
 

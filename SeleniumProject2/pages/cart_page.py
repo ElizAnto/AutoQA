@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
 
-class ProductPage(Base):
+class CartPage(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -12,66 +12,107 @@ class ProductPage(Base):
 
     # Locators
 
-    select_product="//a[@title='Подробнее о «Xiaomi Redmi Note 14 8/128GB Черный»']"
-    main_word = "//h1[@itemprop='name']"
-    buy_button = "(//a[@data-handler='buy'])[1]"
-    order = "//a[@id='js__popup_addedToCart__cartLinkID']"
     cost_product = "//b[@class='nowrap']"
     cost_final = "//div[@class='multicart__items__resultsLine__value']"
-
+    city_menu = "//a[@title='Выбрать другой город']"
+    city_active = "//span[@class='active']"
+    city_close = "(//a[@title='Закрыть окно'])[2]"
+    city_name = "Самара"
+    city_samara = "//a[@title='" + city_name + "']"
+        # Пункты выдачи
+    delivery_word = "//h2[@class='floatLeft']"
+    point_may = "//label[@for='shipmentradio392']" # ТЦ Май
+        # Способы оплаты
+    cash = "//label[@for='paymentradio1']"
+        # Оформление
+    order_button = "//input[@class='button button__orange semibold js__formBoxMainButton floatRight']"
+    main_word = "//label[@for='delivery_date']"
 
     # Getters
 
-    def get_input_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.input_button)))
+    def get_cost_product(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cost_product)))
 
-    def get_login(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.login)))
+    def get_cost_final(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cost_final)))
 
-    def get_password(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.password)))
+    def get_city_menu(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_menu)))
 
-    def get_remember_checkbox(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.remember_checkbox)))
+    def get_city_active(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_active)))
 
-    def get_login_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.login_button)))
+    def get_city_close(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_close)))
+
+    def get_city_samara(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.city_samara)))
+
+    def get_delivery_word(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.delivery_word)))
+
+    def get_point_may(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.point_may)))
+
+    def get_cash(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cash)))
+
+    def get_order_button(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.order_button)))
 
     def get_main_word(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.main_word)))
 
     # Actions
 
-    def click_input_button(self):
-        self.get_input_button().click()
-        print("Click input button")
+    def click_cost_product(self):
+        self.get_cost_product().click()
+        print("Click cost product")
 
-    def input_login(self, login):
-        self.get_login().send_keys(login)
-        print("Input email")
+    def click_cost_final(self):
+        self.get_cost_product().click()
+        print("Click cost final")
 
-    def input_password(self, password):
-        self.get_password().send_keys(password)
-        print("Input password")
+    def click_city_menu(self):
+        self.get_city_menu().click()
+        print("Click city menu")
 
-    def click_remember_checkbox(self):
-        self.get_remember_checkbox().click()
-        print("Click remember checkbox")
+    def click_city_close(self):
+        self.get_city_close().click()
+        print("Click city close")
 
-    def click_login_button(self):
-        self.get_login_button().click()
-        print("Click login button")
+    def click_city_samara(self):
+        self.get_city_samara().click()
+        print("Click city Samara")
+
+    def click_point_may(self):
+        self.get_point_may().click()
+        print("Click point may")
+
+    def click_cash(self):
+        self.get_cash().click()
+        print("Click cash")
+
+    def click_order_button(self):
+        self.get_order_button().click()
+        print("Click order button")
 
     # Methods
 
-    def authorisation(self):
-        self.driver.get(self.url)
-        self.driver.maximize_window()
+    def product_confirmation(self):
         self.get_current_url()
-        self.click_input_button()
-        self.input_login("antonelizarovnbox.ru@gmail.com")
-        self.input_password("Onl1netr")
-        self.click_remember_checkbox()
-        # self.checkbox_status(self.driver, "autologin")
-        self.click_login_button()
-        self.assert_word(self.get_main_word(), "Каталог")
+        self.equality(self.get_cost_product(), self.get_cost_final())
+        self.click_city_menu()
+        # Проверяем активен ли город и получаем результат (1 или 0)
+        city_active_status = self.city_is_active(self.get_city_active(), self.city_name)
+        # Если город не активен (вернулся 0), тогда кликаем для выбора города
+        if not city_active_status:
+            self.click_city_samara()
+        else:
+            self.click_city_close()
+        self.assert_word(self.get_delivery_word(), "Пункты выдачи в Самаре")
+        self.click_point_may()
+        self.click_cash()
+        self.click_order_button()
+        self.assert_word(self.get_main_word(), "Желаемая дата получения заказа")
+
