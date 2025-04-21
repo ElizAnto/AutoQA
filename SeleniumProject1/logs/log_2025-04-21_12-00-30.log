@@ -1,0 +1,34 @@
+
+-----
+Test: tests/test_buy_product.py::test_buy_product_1 (call)
+Start time: 2025-04-21 12:00:31.589572
+Start name method: authorisation
+
+End time: 2025-04-21 12:00:32.873334
+End name method: authorisation
+URL: https://www.saucedemo.com/inventory.html
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_buy_product_1 (call)
+Start time: 2025-04-21 12:00:32.874349
+Start name method: select_products_1
+
+End time: 2025-04-21 12:00:33.092564
+End name method: select_products_1
+URL: https://www.saucedemo.com/cart.html
+
+-----
+
+-----
+Test: tests/test_buy_product.py::test_buy_product_1 (call)
+Start time: 2025-04-21 12:00:33.222058
+Start name method: input_information
+
+
+-----
+Test: tests/test_link_about.py::test_link_about (call)
+Start time: 2025-04-21 12:00:36.857576
+Start name method: authorisation
+

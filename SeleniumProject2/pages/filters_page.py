@@ -8,10 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 
 class SmartFiltersPage(Base):
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    """Выбор необходимых фильтров"""
 
     # Locators
 
@@ -206,7 +203,6 @@ class SmartFiltersPage(Base):
         self.input_price_max("60000")
         self.click_score_menu()
         self.click_score_5()
-        # self.click_os_menu()
         self.click_os_android_14()
         self.click_platform_hyperos()
         self.click_memory_rom_128()

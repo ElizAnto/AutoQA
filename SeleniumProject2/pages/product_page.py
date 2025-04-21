@@ -5,10 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 
 class ProductPage(Base):
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    """Выбор продукта и отправка в корзину"""
 
     # Locators
 

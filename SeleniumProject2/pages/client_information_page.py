@@ -6,10 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 
 class ClientInformationPage(Base):
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    """Заполнение данных заказчика на этапе оформления заказа"""
 
     # Locators
 
@@ -17,7 +14,7 @@ class ClientInformationPage(Base):
     phone = "//input[@id='cellphone__ID']"
     sms_time = "//select[@id='sms_time__ID']"
     sms_time_2 = "//option[@value='2']"
-    main_word = "//div[@class='note note__dash gray']" # Ваш Заказ будет обработан автоматически, о готовности заказа к получению мы уведомим Вас по SMS и e-mail.
+    main_word = "//div[@class='note note__dash gray']"
 
     # Getters
 

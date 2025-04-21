@@ -5,12 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 
 class LoginPage(Base):
-
-    url = 'https://www.onlinetrade.ru'
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    """Вход в систему под пользовательскими данными"""
 
     # Locators
 
@@ -66,13 +61,11 @@ class LoginPage(Base):
     # Methods
 
     def authorisation(self):
-        self.driver.get(self.url)
-        self.driver.maximize_window()
+
         self.get_current_url()
         self.click_input_button()
         self.input_login("test@testov.ru")
         self.input_password("Onl1netr")
         self.click_remember_checkbox()
-        # self.checkbox_status(self.driver, "autologin")
         self.click_login_button()
         self.assert_word(self.get_main_word(), "Каталог")
