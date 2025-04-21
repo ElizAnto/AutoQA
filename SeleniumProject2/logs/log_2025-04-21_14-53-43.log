@@ -1,0 +1,11 @@
+
+-----
+Test: tests/test_buy_product.py::test_buy_phone (call)
+Start time: 2025-04-21 14:53:48.433755
+Start name method: authorisation
+
+End time: 2025-04-21 14:53:54.437451
+End name method: authorisation
+URL: https://www.onlinetrade.ru/
+
+-----

@@ -1,8 +1,8 @@
 import datetime
+from selenium import webdriver
 
-class Base():
-
-    def __init__(self, driver):
+class Base:
+    def __init__(self, driver: webdriver.Chrome):
         self.driver = driver
 
     """Method Get Current URL"""

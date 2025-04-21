@@ -3,6 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from utilities.logger import Logger
 
 class LoginPage(Base):
     """Вход в систему под пользовательскими данными"""
@@ -61,7 +62,7 @@ class LoginPage(Base):
     # Methods
 
     def authorisation(self):
-
+        Logger.add_start_step(method="authorisation")
         self.get_current_url()
         self.click_input_button()
         self.input_login("test@testov.ru")
@@ -69,3 +70,4 @@ class LoginPage(Base):
         self.click_remember_checkbox()
         self.click_login_button()
         self.assert_word(self.get_main_word(), "Каталог")
+        Logger.add_end_step(url=self.driver.current_url, method="authorisation")
