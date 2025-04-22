@@ -3,6 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 from utilities.logger import Logger
+import allure
 
 class CartPage(Base):
     """Детали заказа (место получения, дата)"""
@@ -96,21 +97,22 @@ class CartPage(Base):
     # Methods
 
     def product_confirmation(self):
-        Logger.add_start_step(method="product_confirmation")
-        self.get_current_url()
-        self.equality(self.get_cost_product(), self.get_cost_final())
-        self.click_city_menu()
-        # Проверяем активен ли город и получаем результат (1 или 0)
-        city_active_status = self.city_is_active(self.get_city_active(), self.city_name)
-        # Если город не активен (вернулся 0), тогда кликаем для выбора города
-        if not city_active_status:
-            self.click_city_samara()
-        else:
-            self.click_city_close()
-        self.assert_word(self.get_delivery_word(), "Пункты выдачи в Самаре")
-        self.click_point_may()
-        self.click_cash()
-        self.click_order_button()
-        self.assert_word(self.get_main_word(), "Желаемая дата получения заказа")
-        Logger.add_end_step(url=self.driver.current_url, method="product_confirmation")
+        with allure.step("Product confirmation"):
+            Logger.add_start_step(method="product_confirmation")
+            self.get_current_url()
+            self.equality(self.get_cost_product(), self.get_cost_final())
+            self.click_city_menu()
+            # Проверяем активен ли город и получаем результат (1 или 0)
+            city_active_status = self.city_is_active(self.get_city_active(), self.city_name)
+            # Если город не активен (вернулся 0), тогда кликаем для выбора города
+            if not city_active_status:
+                self.click_city_samara()
+            else:
+                self.click_city_close()
+            self.assert_word(self.get_delivery_word(), "Пункты выдачи в Самаре")
+            self.click_point_may()
+            self.click_cash()
+            self.click_order_button()
+            self.assert_word(self.get_main_word(), "Желаемая дата получения заказа")
+            Logger.add_end_step(url=self.driver.current_url, method="product_confirmation")
 

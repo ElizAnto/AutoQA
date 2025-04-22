@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -45,10 +46,11 @@ class ClearCartPage(Base):
     # Methods
 
     def clear_cart(self):
-        Logger.add_start_step(method="clear_cart")
-        self.get_current_url()
-        self.click_cart()
-        self.click_clear_button()
-        self.click_clear_confirm_button()
-        self.assert_word(self.get_main_word(), "Основная")
-        Logger.add_end_step(url=self.driver.current_url, method="clear_cart")
+        with allure.step("Clear cart"):
+            Logger.add_start_step(method="clear_cart")
+            self.get_current_url()
+            self.click_cart()
+            self.click_clear_button()
+            self.click_clear_confirm_button()
+            self.assert_word(self.get_main_word(), "Основная")
+            Logger.add_end_step(url=self.driver.current_url, method="clear_cart")

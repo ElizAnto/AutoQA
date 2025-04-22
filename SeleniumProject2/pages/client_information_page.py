@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -64,13 +65,14 @@ class ClientInformationPage(Base):
     # Methods
 
     def input_information(self):
-        Logger.add_start_step(method="input_information")
-        self.get_current_url()
-        self.clear_name()
-        self.input_name("Антон Елизаров")
-        self.clear_phone()
-        self.input_phone("+7987654321")
-        self.click_sms_time()
-        self.click_sms_time_2()
-        self.assert_word(self.get_main_word(), "Ваш Заказ будет обработан автоматически, о готовности заказа к получению мы уведомим Вас по SMS и e-mail.")
-        Logger.add_end_step(url=self.driver.current_url, method="input_information")
+        with allure.step("Input information"):
+            Logger.add_start_step(method="input_information")
+            self.get_current_url()
+            self.clear_name()
+            self.input_name("Антон Елизаров")
+            self.clear_phone()
+            self.input_phone("+7987654321")
+            self.click_sms_time()
+            self.click_sms_time_2()
+            self.assert_word(self.get_main_word(), "Ваш Заказ будет обработан автоматически, о готовности заказа к получению мы уведомим Вас по SMS и e-mail.")
+            Logger.add_end_step(url=self.driver.current_url, method="input_information")

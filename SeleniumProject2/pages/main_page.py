@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -37,11 +38,12 @@ class SmartPage(Base):
     # Methods
 
     def search_smart(self):
-        Logger.add_start_step(method="search_smart")
-        self.get_current_url()
-        self.click_catalog()
-        self.click_smartphone()
-        self.assert_word(self.get_main_word(), "Смартфоны")
-        Logger.add_end_step(url=self.driver.current_url, method="search_smart")
+        with allure.step("Search smart"):
+            Logger.add_start_step(method="search_smart")
+            self.get_current_url()
+            self.click_catalog()
+            self.click_smartphone()
+            self.assert_word(self.get_main_word(), "Смартфоны")
+            Logger.add_end_step(url=self.driver.current_url, method="search_smart")
 
 
