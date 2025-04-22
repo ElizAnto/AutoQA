@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from base.base_class import Base
+from utilities.logger import Logger
 
 class ProductPage(Base):
     """Выбор продукта и отправка в корзину"""
@@ -49,9 +49,11 @@ class ProductPage(Base):
     # Methods
 
     def select_product(self):
+        Logger.add_start_step(method="select_product")
         self.get_current_url()
         self.click_product()
         self.assert_word(self.get_phone_word(), "Смартфон Xiaomi Redmi Note 14 8/128GB Черный")
         self.click_buy_button()
         self.click_order_button()
         self.assert_word(self.get_main_word(), "Ссылка на вашу корзину")
+        Logger.add_end_step(url=self.driver.current_url, method="select_product")

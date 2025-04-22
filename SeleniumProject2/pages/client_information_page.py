@@ -2,8 +2,8 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from base.base_class import Base
+from utilities.logger import Logger
 
 class ClientInformationPage(Base):
     """Заполнение данных заказчика на этапе оформления заказа"""
@@ -64,6 +64,7 @@ class ClientInformationPage(Base):
     # Methods
 
     def input_information(self):
+        Logger.add_start_step(method="input_information")
         self.get_current_url()
         self.clear_name()
         self.input_name("Антон Елизаров")
@@ -72,4 +73,4 @@ class ClientInformationPage(Base):
         self.click_sms_time()
         self.click_sms_time_2()
         self.assert_word(self.get_main_word(), "Ваш Заказ будет обработан автоматически, о готовности заказа к получению мы уведомим Вас по SMS и e-mail.")
-
+        Logger.add_end_step(url=self.driver.current_url, method="input_information")

@@ -4,8 +4,8 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from base.base_class import Base
+from utilities.logger import Logger
 
 class SmartFiltersPage(Base):
     """Выбор необходимых фильтров"""
@@ -192,6 +192,7 @@ class SmartFiltersPage(Base):
     # Methods
 
     def choose_filters(self):
+        Logger.add_start_step(method="choose_filters")
         self.get_current_url()
         self.click_stock_in_stock()
         self.click_discount_in_action()
@@ -215,3 +216,4 @@ class SmartFiltersPage(Base):
         time.sleep(0.5) # Без задержки цвет не успевает установиться
         self.click_select_button()
         self.assert_word(self.get_main_word(), "Xiaomi Redmi Note 14 8/128GB Черный")
+        Logger.add_end_step(url=self.driver.current_url, method="choose_filters")

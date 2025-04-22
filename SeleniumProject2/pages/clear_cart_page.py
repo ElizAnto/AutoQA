@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from base.base_class import Base
+from utilities.logger import Logger
 
 class ClearCartPage(Base):
     """Очистка корзины"""
@@ -45,8 +45,10 @@ class ClearCartPage(Base):
     # Methods
 
     def clear_cart(self):
+        Logger.add_start_step(method="clear_cart")
         self.get_current_url()
         self.click_cart()
         self.click_clear_button()
         self.click_clear_confirm_button()
         self.assert_word(self.get_main_word(), "Основная")
+        Logger.add_end_step(url=self.driver.current_url, method="clear_cart")

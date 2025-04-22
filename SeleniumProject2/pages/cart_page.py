@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from base.base_class import Base
+from utilities.logger import Logger
 
 class CartPage(Base):
     """Детали заказа (место получения, дата)"""
@@ -96,6 +96,7 @@ class CartPage(Base):
     # Methods
 
     def product_confirmation(self):
+        Logger.add_start_step(method="product_confirmation")
         self.get_current_url()
         self.equality(self.get_cost_product(), self.get_cost_final())
         self.click_city_menu()
@@ -111,4 +112,5 @@ class CartPage(Base):
         self.click_cash()
         self.click_order_button()
         self.assert_word(self.get_main_word(), "Желаемая дата получения заказа")
+        Logger.add_end_step(url=self.driver.current_url, method="product_confirmation")
 
