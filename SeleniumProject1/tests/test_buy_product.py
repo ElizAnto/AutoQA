@@ -1,8 +1,4 @@
-import os
-import pytest
 import allure
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 
 from pages.cart_page import CartPage
 from pages.client_information_page import ClientInformationPage
@@ -15,16 +11,8 @@ from pages.payment_page import PaymentPage
 
 # @pytest.mark.order(3)
 @allure.description("Test buy product 1")
-def test_buy_product_1():
+def test_buy_product_1(set_up, driver):
     """sauce-labs-backpack"""
-    options = webdriver.ChromeOptions()
-    options.add_argument("--incognito") # Режим инкогнито, убирает окно об утечке пароля
-    options.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(
-        options=options,
-        service=Service(os.path.join("..", "resource", "chromedriver.exe"))
-    )
-
     print("Start test 1")
 
     login = LoginPage(driver)
@@ -46,19 +34,10 @@ def test_buy_product_1():
     f.finish()
 
     print("Finish test 1")
-    driver.quit()
 
 @allure.description("Test buy product 2")
-def test_buy_product_2():
+def test_buy_product_2(set_up, driver):
     """sauce-labs-bike-light"""
-    options = webdriver.ChromeOptions()
-    options.add_argument("--incognito")  # Режим инкогнито, убирает окно об утечке пароля
-    options.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(
-        options=options,
-        service=Service(os.path.join("..", "resource", "chromedriver.exe"))
-    )
-
     print("Start test 2")
 
     login = LoginPage(driver)
@@ -80,18 +59,10 @@ def test_buy_product_2():
     f.finish()
 
     print("Finish test 2")
-    driver.quit()
 
 @allure.description("Test buy product 3")
-def test_buy_product_3():
+def test_buy_product_3(set_up, driver):
     """sauce-labs-bolt-t-shirt"""
-    options = webdriver.ChromeOptions()
-    options.add_argument("--incognito")  # Режим инкогнито, убирает окно об утечке пароля
-    options.add_experimental_option("detach", True)
-    driver = webdriver.Chrome(
-        options=options,
-        service=Service(os.path.join("..", "resource", "chromedriver.exe"))
-    )
 
     print("Start test 3")
 
@@ -114,4 +85,3 @@ def test_buy_product_3():
     f.finish()
 
     print("Finish test 3")
-    driver.quit()
