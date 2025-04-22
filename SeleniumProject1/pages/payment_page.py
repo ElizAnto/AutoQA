@@ -6,9 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 from utilities.logger import Logger
 
-
 class PaymentPage(Base):
-
+    """Оформление заказа"""
     def __init__(self, driver):
         super().__init__(driver) # Указатель, что это потомок класса Base
         self.driver = driver

@@ -8,7 +8,7 @@ from utilities.logger import Logger
 import allure
 
 class LoginPage(Base):
-
+    """Авторизация клиента"""
     url = 'https://www.saucedemo.com/'
 
     def __init__(self, driver):

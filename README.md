@@ -1,25 +1,61 @@
-SeleniumProject1: test buy product on site https://www.saucedemo.com/ 
+SeleniumProject1: tests on site https://www.saucedemo.com/ 
 
-... description ...
+Проект включает в себя следующие тесты:
+1. test_link_logout.py: Дымовое тестирование кнопки Logout
+2. test_buy_product.py: Дымовое тестирование покупки товара (тесты для трех товаров)
+Pages:
+- login: Авторизация
+- main: Главная страница
+- cart: Корзина
+- client_information: Данные клиента для заказа
+- payment: Оформление заказа
+- finish: Финишная страница
 
-SeleniumProject2: test buy product on site https://www.onlinetrade.ru
+Дополнения:
++ screen
++ conftest
++ logger
++ allure
+_________________________________________________________
 
-Запуск теста с аннотацией шагов в терминале: python -m pytest -s -v
-
-Запуск теста python pytest
+SeleniumProject2: test on site https://www.onlinetrade.ru
 
 Важно! Пройти тест до финиша, поскольку в процессе добавляется товар в корзину и в конце удаляется из корзины для успешного повторного теста.
 
-Тест test_buy_product: 
-1. login: Авторизация
-2. smart: Страница со смартфонами
-3. filters: Выбор фильтров
-4. product: Выбор отфильтрованного смартфона
-5. cart: Переход в корзину
-6. client_information: Добавление информации о клиенте (без нажатия на кнопку для финального заказа)
-7. clear_cart: Очистка корзины
+Проект включает в себя следующие тесты:
+1. test_buy_product.py: Дымовое тестирование покупки товара 'Смартфон Xiaomi Redmi Note 14 8/128GB Черный' 
+Pages:
+- login: Авторизация
+- smart: Страница со смартфонами
+- filters: Выбор фильтров
+- product: Выбор отфильтрованного смартфона
+- cart: Переход в корзину
+- client_information: Добавление информации о клиенте до нажатия на кнопку для финального заказа
+- clear_cart: Очистка корзины
 
 Дополнения:
 + conftest
 + logger
 + allure
+_________________________________________________________
+
+Инструкции:
+
+Запуск тестов с аннотацией прохождения теста в терминале: 
+python -m pytest -s -v
+
+Запуск тестов: 
+python pytest
+
+Запуск отдельного теста (запускать из директории проекта), где name - название теста из папки tests, например, test.py: 
+python -m pytest -s -v tests/name
+
+Прохождение теста с созданием отчета Allure (запускать из директории проекта), где name - название теста из папки tests, например, test.py:
+python -m pytest --alluredir=test_results/ tests/NAME
+
+В командной строке перейти на директорию проекта и запустить отчет:
+allure serve test_results/
+
+По окончании закрыть отчет в командной строке:
+CTRL+C, Y
+

@@ -1,7 +1,7 @@
 import datetime
 import os
 
-
+"""Логирование"""
 class Logger():
     file_name = f"C:\\Users\\Toughie\\PycharmProjects\\AutoQA\\SeleniumProject1\\logs\\log_" + str(
         datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")) + ".log"

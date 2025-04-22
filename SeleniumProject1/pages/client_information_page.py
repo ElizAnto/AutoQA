@@ -6,9 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from base.base_class import Base
 from utilities.logger import Logger
 
-
 class ClientInformationPage(Base):
-
+    """Заполнение информации клиента для оформления заказа"""
     url = 'https://www.saucedemo.com/'
 
     def __init__(self, driver):

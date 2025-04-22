@@ -3,9 +3,8 @@ import allure
 from base.base_class import Base
 from utilities.logger import Logger
 
-
 class FinishPage(Base):
-
+    """Финишная страница"""
     def __init__(self, driver):
         super().__init__(driver) # Указатель, что это потомок класса Base
         self.driver = driver
