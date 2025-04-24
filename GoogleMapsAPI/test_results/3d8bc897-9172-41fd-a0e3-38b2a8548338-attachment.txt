@@ -1,0 +1,41 @@
+Метод POST
+https://rahulshettyacademy.com/maps/api/place/add/json?key=qaclick123
+{'status': 'OK', 'place_id': '3714adbdfee45255aa48d643037a3067', 'scope': 'APP', 'reference': 'b85be4b63c3c2f9b1747ae6623b9dad6b85be4b63c3c2f9b1747ae6623b9dad6', 'id': 'b85be4b63c3c2f9b1747ae6623b9dad6'}
+Успешно! Статус код = 200
+['status', 'place_id', 'scope', 'reference', 'id']
+Все поля присутствуют
+status верен!
+Метод GET POST
+https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=3714adbdfee45255aa48d643037a3067
+{"location":{"latitude":"-38.383494","longitude":"33.427362"},"accuracy":"50","name":"Frontline house","phone_number":"(+91) 983 893 3937","address":"29, side layout, cohen 09","types":"shoe park,shop","website":"http:\/\/google.com","language":"French-IN"}
+Успешно! Статус код = 200
+['location', 'accuracy', 'name', 'phone_number', 'address', 'types', 'website', 'language']
+Все поля присутствуют
+address верен!
+Метод PUT
+{"msg":"Address successfully updated"}
+Успешно! Статус код = 200
+['msg']
+Все поля присутствуют
+msg верен!
+Метод GET PUT
+https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=3714adbdfee45255aa48d643037a3067
+{"location":{"latitude":"-38.383494","longitude":"33.427362"},"accuracy":"50","name":"Frontline house","phone_number":"(+91) 983 893 3937","address":"100 Lenina street, RU","types":"shoe park,shop","website":"http:\/\/google.com","language":"French-IN"}
+Успешно! Статус код = 200
+['location', 'accuracy', 'name', 'phone_number', 'address', 'types', 'website', 'language']
+Все поля присутствуют
+address верен!
+Метод DELETE
+{"status":"OK"}
+Успешно! Статус код = 200
+['status']
+Все поля присутствуют
+status верен!
+Метод GET DELETE
+https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=3714adbdfee45255aa48d643037a3067
+{"msg":"Get operation failed, looks like place_id  doesn't exists"}
+Успешно! Статус код = 404
+['msg']
+Все поля присутствуют
+Слово failed присутствует
+Тестирование создания, изменения и удаления новой локации завершено успешно
