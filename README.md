@@ -3,6 +3,7 @@ SeleniumProject1: tests on site https://www.saucedemo.com/
 Проект включает в себя следующие тесты:
 1. test_link_logout.py: Дымовое тестирование кнопки Logout
 2. test_buy_product.py: Дымовое тестирование покупки товара (тесты для трех товаров)
+
 Pages:
 - login: Авторизация
 - main: Главная страница
@@ -24,6 +25,7 @@ SeleniumProject2: test on site https://www.onlinetrade.ru
 
 Проект включает в себя следующие тесты:
 1. test_buy_product.py: Дымовое тестирование покупки товара 'Смартфон Xiaomi Redmi Note 14 8/128GB Черный' 
+
 Pages:
 - login: Авторизация
 - smart: Страница со смартфонами
